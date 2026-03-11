@@ -1,6 +1,6 @@
 local config = {
     DEBUG = {
-        DRAW_ACTIVE_BOXES = false,
+        DRAW_ACTIVE_BOXES = true,
         DRAW_GUI = true,
         DEBUG_MESSAGES = true,
         ALLOWED_MESSAGES = {

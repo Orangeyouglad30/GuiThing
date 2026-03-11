@@ -7,6 +7,8 @@ function Container:new(name)
     self.ChildAppended = Signal()
     self.ChildRemoved = Signal()
     self.LineageChanged = Signal()
+    self.Layout = nil
+    self.LayoutOrder = 0
 end
 
 function Container:__tostring()
@@ -39,6 +41,12 @@ function Container:RemoveChild(childName)
         if Config.DEBUG.DEBUG_MESSAGES and Config.DEBUG.ALLOWED_MESSAGES.ChildMessages then
             print("There is no child ("..childName..") for parent ("..self.Name..")")
         end
+    end
+end
+
+function Container:ApplyLayout(layoutSource)
+    function self:UpdateElementsInLayout()
+        layoutSource:UpdateElementsInLayout(self)
     end
 end
 

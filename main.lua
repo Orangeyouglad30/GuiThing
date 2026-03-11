@@ -23,7 +23,7 @@ local Score = 0
 
 --MAIN
 function love.load()
-    ListUI = Gui2d:AddGui(require("TestingFiles/listui"))
+    ListUI = Gui2d:AddGui(require("TestingFiles/modaltestui"))
 end
 
 function love.update(dt)

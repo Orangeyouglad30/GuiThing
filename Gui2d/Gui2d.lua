@@ -110,7 +110,7 @@ end
 
 function Gui2d:AddActiveBox(name,x,y,w,h,order,modal)
     local newActiveBox = ActiveBox(name,x,y,w,h,order,modal)
-    
+
     if not Gui2d.ActiveBoxes[order] then
         Gui2d.ActiveBoxes[order] = {}
     end
@@ -120,18 +120,23 @@ function Gui2d:AddActiveBox(name,x,y,w,h,order,modal)
     return newActiveBox
 end
 
+--[[
+For me in the future when I come back to this, the Gui2d.ActiveBoxes are sorted as a table where the key
+is the layout order and the value is a table that contains all ActiveBoxes of that LayoutOrder
+]]
+
 function Gui2d:Tick(dt)
-    Gui2d.TopActiveBoxThisCycle = -99999
+    Gui2d.TopActiveBoxThisCycle = -99999 --This is to keep modality, sets itself to the highest layout order of an active box
 
     local mx,my = love.mouse.getPosition()
     local m1d = love.mouse.isDown(1)
 
-    local keys = {}
-    for k in pairs(Gui2d.ActiveBoxes) do
+    local keys = {} --Gets the indexes 
+    for k,v in pairs(Gui2d.ActiveBoxes) do -- The k is the layout order
         table.insert(keys,k)
     end
 
-    table.sort(keys)
+    table.sort(keys) --Sorts all of the boxes by layout order
 
     for i=#keys,1,-1 do
         local key = keys[i]

@@ -53,5 +53,8 @@ function Prefab:Draw()
     return nil
 end
 
+function Prefab:ApplyLayout(Layout)
+
+end
 
 return Prefab

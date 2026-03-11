@@ -23,10 +23,7 @@ local Score = 0
 
 --MAIN
 function love.load()
-    ClickerUI = Gui2d:AddGui(require("TestingFiles/clickerui"))
-    ClickerUI.Button.MouseButton1Clicked:Connect(function()
-        Score = Score + math.ceil(math.random()*100)
-    end)
+    ListUI = Gui2d:AddGui(require("TestingFiles/listui"))
 end
 
 function love.update(dt)
@@ -37,8 +34,6 @@ function love.update(dt)
 end
 
 function love.draw()
-    ClickerUI.Score.Text = "Score: "..Score
-
     Gui2d:Draw()
 
     love.graphics.setColor(1,1,1)

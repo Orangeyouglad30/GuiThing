@@ -1,4 +1,4 @@
-local Container = require("Gui2d.libraries.Classic"):extend()
+local Container = Object:extend()
 
 function Container:new(name)
     self.Enabled = true

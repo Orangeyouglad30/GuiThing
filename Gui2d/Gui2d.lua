@@ -111,13 +111,11 @@ end
 function Gui2d:AddActiveBox(name,x,y,w,h,order,modal)
     local newActiveBox = ActiveBox(name,x,y,w,h,order,modal)
     
-    if Gui2d.ActiveBoxes[order] then
-        Gui2d.ActiveBoxes[order][name] = newActiveBox
-    else
+    if not Gui2d.ActiveBoxes[order] then
         Gui2d.ActiveBoxes[order] = {}
-        Gui2d.ActiveBoxes[order][name] = newActiveBox
     end
-    --Gui2d.ActiveBoxes[name] = newActiveBox
+
+    Gui2d.ActiveBoxes[order][name] = newActiveBox
 
     return newActiveBox
 end
@@ -139,7 +137,6 @@ function Gui2d:Tick(dt)
         local key = keys[i]
         for boxName,box in pairs(Gui2d.ActiveBoxes[key]) do
             box:Update(dt,mx,my,m1d)
-            --print("UPDATING ACTIVE BOX OR PRIORITY: "..key)
         end
     end
 

@@ -10,8 +10,6 @@ function ImageButton:new(propertyTable)
     self.BackgroundColor = {0,0,0,0}
     self.StrokeWidth = 0 
     self.ImageColor = {1,1,1,1}
-    --self.KeepAspectRatio = true
-    --self.Scale = 1
 
     ImageButton.super.new(self,propertyTable)
 
